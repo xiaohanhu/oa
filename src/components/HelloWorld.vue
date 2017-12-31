@@ -20,6 +20,9 @@
     <h2>MyLink</h2>
     <ul>
     	<li><router-link to='/layout'>Layout</router-link></li>
+    	<li><router-link to='/toDraft'>ToDraft</router-link></li>
+    	<li><router-link to='/audit'>Audit</router-link></li>
+    	<li><router-link to='/forms'>Form</router-link></li>
     </ul>
   </div>
 </template>
