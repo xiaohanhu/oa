@@ -1,5 +1,6 @@
 <template>
 	<Table stripe :columns="columns" :data="toDraftList"></Table>
+	<!--<Page :total="100" show-total></Page>-->
 </template>
 
 <script>
@@ -66,10 +67,10 @@
                                     },
                                     on: {
                                         click: () => {
-                                            this.show(params.index)
+											this.$router.push('/toDraftEdit/' + params.row.id);
                                         }
                                     }
-                                }, 'View'),
+                                }, '修改'),
                                 h('Button', {
                                     props: {
                                         type: 'error',
@@ -80,7 +81,7 @@
                                             this.remove(params.row.id)
                                         }
                                     }
-                                }, 'Delete')
+                                }, '删除')
                             ]);
                         }
                     }
@@ -99,17 +100,14 @@
 		        }).catch(function(error){
 		          alert('错误提示，网络错误，请刷新重试！')
 		        }).then(function (res) {
-		          if (res.data.retCode == 1) {
-		            vm.toDraftList = res.data.result.list;
+		          if (res.data.status == '000000') {
+		            vm.toDraftList = res.data.data.list;
 		          }
 		        })
 	        },
-	      	//显示和删除
-	      	show (index) {
-                this.$Modal.info({
-                    title: 'User Info',
-                    content: `Id)：${this.toDraftList[index].id}<br>Title：${this.data6[index].title}<br>DraftNumber：${this.data6[index].draftNumber}`
-                })
+	      	// 修改
+	      	deit (id) {
+                
             },
             // 删除
             remove (id) {
@@ -119,7 +117,7 @@
 		        }).catch(function(error){
 		          alert('错误提示，网络错误，请刷新重试！')
 		        }).then(function (res) {
-		          if (res.data.retCode == 1) {
+		          if (res.data.status == '000000') {
 		            vm.getDraftList();
 					vm.$Message.error('删除成功!');
 		          } else {

@@ -57,8 +57,8 @@
                                 	公文管理
                             </template>
                             <MenuItem name="1-1"><router-link to='/toDraftList'>发文列表</router-link></MenuItem>
-                            <MenuItem name="1-2"><router-link to='/auditList'>审核列表</router-link></MenuItem>
-                            <MenuItem name="1-3">Option 3</MenuItem>
+                            <MenuItem name="1-2"><router-link to='/toDraftSave'>发布文章</router-link></MenuItem>
+                            <MenuItem name="1-3"><router-link to='/auditList'>审核列表</router-link></MenuItem>
                         </Submenu>
                         <Submenu name="2">
                             <template slot="title">
@@ -94,46 +94,6 @@
 </template>
 <script>
     export default {
-        data () {
-            return {
-            	fileType: [],
-                model1: '',
-                columns1: [
-                	{
-                        title: '编号',
-                        key: 'id'
-                    },
-                    {
-                        title: '名称',
-                        key: 'name'
-                    },
-                    {
-                        title: '描述',
-                        key: 'desc'
-                    }
-                ]
-            }
-        },
-        mounted(){
-	      this.getFileType();
-	    },
-        methods: {
-	      	//获取任务列表
-	      	getFileType(){
-		        let vm = this;
-		        this.$http.post('http://localhost:8888/fileType/list', {
-		        
-		        }).catch(function(error){
-		          alert('错误提示，网络错误，请刷新重试！')
-		        }).then(function (res) {
-		          if (res.data.retCode == 1) {
-		            console.log(res.data.result.list)
-		            // vm.totalElements = res.data.result.total;
-		            vm.fileType = vm.fileType.concat(res.data.result.list);
-		          }
-		        })
-	        }
-	    }
     }
 </script>
 	

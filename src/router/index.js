@@ -3,9 +3,11 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Index from '@/components/Index'
 import ToDraftList from '@/components/ToDraftList'
+import ToDraftSave from '@/components/ToDraftSave'
+import ToDraftEdit from '@/components/ToDraftEdit'
+
 import AuditList from '@/components/AuditList'
 import Layout from '@/components/Layout'
-import ToDraft from '@/components/ToDraft'
 import Table from '@/components/Table'
 import Forms from '@/components/Forms'
 import AuditSave from '@/components/AuditSave'
@@ -36,17 +38,22 @@ export default new Router({
 	      name: 'ToDraftList',
 	      component: ToDraftList
 	    },
+	    {
+	      path: '/toDraftSave',
+	      name: 'ToDraftSave',
+	      component: ToDraftSave
+	    },
+	    {
+	      path: '/toDraftEdit/:id',
+	      name: 'ToDraftEdit',
+	      component: ToDraftEdit
+	    },
 	  	{
 	  		path: "/auditList",
 	  		name: 'AuditList',
 	  	    component: AuditList
 	  	},
 	  ]
-     },
-    {
-      path: '/toDraft',
-      name: 'ToDraft',
-      component: ToDraft
     },
     {
       path: '/auditSave',
